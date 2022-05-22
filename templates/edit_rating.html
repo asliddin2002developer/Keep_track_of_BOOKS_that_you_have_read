@@ -1,0 +1,16 @@
+{% extends 'bootstrap/base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block title %}Edit Rating{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 40px;">
+    <h5>Title: <span style="font-weight: bold;">{{ book.name }}</span></h5>
+    <h5>Author: <span style="font-weight: bold;">{{ book.author }}</span></h5>
+    <h5>Current Rating: <span style="color: red; font-weight: bold;">{{ book.rating }}</span></h5>
+    <br>
+    <h4>Enter New Rating:</h4>
+
+    {{ wtf.quick_form(form) }}
+</div>
+{% endblock %}

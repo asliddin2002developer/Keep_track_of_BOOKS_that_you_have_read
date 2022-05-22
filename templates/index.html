@@ -1,0 +1,43 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}Library{% endblock %}
+
+{% block content %}
+<h1 style="text-align: center;">My Library</h1>
+
+{% if books == [] %}
+   <p>There are no books in your collection!<br>
+   <b>Click Below To Add Your Books!</b></p>
+{% else %}
+    <div class="container" style="padding: 20px;">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Book Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Rating</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books -%}
+                    <tr>
+                        <th scope="row">{{ book.id }}</th>
+                        <td>{{ book.name }}</td>
+                        <td>{{ book.author }}</td>
+                        <td>{{ book.rating }}/10</td>
+                        <td><a class="btn btn-primary btn-sm" type="button" href="{{ url_for('edit_rating', id=book.id) }}">Edit Rating</a></td>
+                        <td><a type="button" class="btn btn-sm btn-danger" href="{{ url_for('delete_entry', id=book.id) }}">Delete</a></td>
+                    </tr>
+                {% endfor -%}
+            </tbody>
+        </table>
+    </div>
+{% endif %}
+
+<div class="container" style="text-align: center;">
+    <a type="button" class="btn btn-lg btn-primary" href="{{ url_for('add') }}">Add New Book</a>
+</div>
+{% endblock %}
