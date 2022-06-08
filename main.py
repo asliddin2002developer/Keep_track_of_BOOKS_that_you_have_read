@@ -33,8 +33,7 @@ class Books(db.Model):
     author = db.Column(db.String(255), nullable=False)
     rating = db.Column(db.Float, nullable=False)
 
-    def __repr__(self):
-        return f'<Book {self.name}>'
+db.create_all()
 
 
 @app.route('/')
@@ -92,4 +91,3 @@ def delete_entry():
 
 if __name__ == "__main__":
     app.run(debug=True)
-    db.create_all()
